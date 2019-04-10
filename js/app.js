@@ -38,3 +38,9 @@ Horn.loadHorns = () => {
 }
 
 $(() => Horn.readJson());
+
+$('select[name="animals"]').on('change', function (){
+  let $selection = $(this).val();
+  $('data/page-1.json').hide()
+  $(`data/page-1.json[keyword="${selection}"]`).show()
+})
