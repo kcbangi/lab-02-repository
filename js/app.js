@@ -37,10 +37,15 @@ Horn.loadHorns = () => {
   Horn.allHorns.forEach(horn => horn.render())
 }
 
+$('#horn-template').on('change', function () {
+  let $selection = $(this).val();
+  if ($selection === 'Filter by Keyword') {
+    $('div').show();
+  } else {
+    $('div').hide();
+    $(`.${$selection}`).show();
+  }
+});
+
 $(() => Horn.readJson());
 
-$('select[name="animals"]').on('change', function (){
-  let $selection = $(this).val();
-  $('data/page-1.json').hide()
-  $(`data/page-1.json[keyword="${selection}"]`).show()
-})
