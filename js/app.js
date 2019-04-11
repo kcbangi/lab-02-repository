@@ -59,7 +59,7 @@ Horn.loadHorns = () => {
 Horn.populateFilter = () => {
   let filterKeywords = [];
   $('option').not(':first').remove();
-  Horn.all.forEach(horn => {
+  Horn.allHorns.forEach(horn => {
     if (!filterKeywords.includes(horn.keyword))
     filterKeywords.push(horn.keyword);
   });
