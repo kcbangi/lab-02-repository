@@ -54,6 +54,8 @@ Horn.loadHorns = () => {
   Horn.allHorns.forEach(horn => horn.render())
 }
 
+// clears all images from page and adds the ones chosen in the filter back in, ready to be rendered
+
 Horn.populateFilter = () => {
   let filterKeywords = [];
   $('option').not(':first').remove();
@@ -62,7 +64,7 @@ Horn.populateFilter = () => {
     filterKeywords.push(horn.keyword);
   });
 
-  filterKeywrods.sort();
+  filterKeywords.sort();
 
   filterKeywords.forEach(keyword => {
     let optionTag = `<option value="${keyword}">
@@ -70,6 +72,8 @@ Horn.populateFilter = () => {
     $('select').append(optionTag);
   });
 };
+
+// Hides all images from page and fades back in the ones chosen by the filter.
 
 Horn.handleFilter = () => {
   $('select').on('change',function () {
