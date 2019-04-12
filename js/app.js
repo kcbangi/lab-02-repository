@@ -96,7 +96,7 @@ Horn.handleFilter = () => {
 
       $(`option[value=${$selected}]`).fadeIn();
     } else {
-      $('div').removeClass('filtered').fadeOut();
+      $('div').removeClass('filtered').fadeIn();
       $(`option[value=${$selected}]`).fadeIn();
     }
   });
