@@ -1,16 +1,22 @@
 'use strict';
 
-//creates constructor function
+// Some of this code was from our class code review,
+// but I wanted to get at least enough up and running that we could work on handlebars and flex box tonight.
+// It was typed out by hand with care taken to work on understanding as I went.
+
+// creates constructor function
 
 function Horn(horn) {
-  this.name = horn.name;
   this.image_url = horn.image_url;
-  this.hobbies = horn.hobbies;
+  this.title = horn.title;
+  this.description = horn.decsription;
+  this.keyword = horn.keyword;
+  this.horns = horn.horns;
 }
 
 // creates array with all objects from the constructor function
 
-Horn.allHorns =[];
+Horn.allHorns = [];
 
 // declares function that clones the empty div elements, populates it with properties from each object, and deletes the emplty div. 
 
@@ -78,7 +84,7 @@ Horn.populateFilter = () => {
 Horn.handleFilter = () => {
   $('select').on('change',function () {
     let $selected = $(this).val();
-    if ($slected !== 'default') {
+    if ($selected !== 'default') {
       $(div).hide();
 
       Horn.all.forEach(horn =>{
