@@ -22,18 +22,15 @@ Horn.allHorns = [];
 
 Horn.prototype.render = function() {
   $('main').append('<div class="clone"></div>');
-  let hornClone = $ ('div[class="clone"]');
+  let $hornClone = $('div[class="clone"]');
+  $hornClone.html($('#horn-template').html());
+  $hornClone.find('h2').text(this.title);
+  $hornClone.find('img').attr('src', this.image_url);
+  $hornClone.find('p').text(this.description);
+  $hornClone.attr('class', this.keyword);
+  $hornClone.removeClass('clone');
+};
 
-  let hornHtml = $('#horn-template').html();
-
-  hornClone.html(hornHtml)
-
-  hornClone.find('h2').text(this.name);
-  hornClone.find('img').attr('src', this.image_url);
-  hornClone.find('p').text(this.hobbies);
-  hornClone.removeClass('clone');
-  hornClone.attr('class', this.name);
-}
 
 // creates a promise that once the json file is read, data from each object will be populated into the new div template.
 
@@ -56,9 +53,9 @@ Horn.readJson = () => {
 
 // creates function that iterates through the horns array and renders each object to the page.
 
-Horn.loadHorns = () => {
-  Horn.allHorns.forEach(horn => horn.render())
-}
+// Horn.loadHorns = () => {
+//   Horn.allHorns.forEach(horn => horn.render())
+// }
 
 // clears all images from page and adds the ones chosen in the filter back in, ready to be rendered
 
