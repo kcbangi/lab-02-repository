@@ -4,6 +4,8 @@ function Horn(horn) {
   this.name = horn.name;
   this.image_url = horn.image_url;
   this.hobbies = horn.hobbies;
+  this.keyword = horn.keyword;
+  this.horns = horn.horns;
 }
 
 Horn.allHorns =[];
@@ -26,26 +28,55 @@ Horn.prototype.render = function() {
 Horn.readJson = () => {
   $.get('data/page-1.json', 'json')
     .then(data => {
-      data.forEach(item => {
-        Horn.allHorns.push(new Horn(item));
-      })
+      data.forEach(horn => {
+        Horn.allHorns.push(new Horn(horn));
+      });
+      Horn.allHorns.forEach(horn => {
+        $('main').append(horn.render());
+      });
     })
-    .then(Horn.loadHorns)
-}
+    .then(Horn.filter)
+    .then(Horn.handlefilter);
+};
 
-Horn.loadHorns = () => {
-  Horn.allHorns.forEach(horn => horn.render())
-}
+Horn.filter = () => {
+  let filterKeyword = [];
 
-$('#horn-template').on('change', function () {
-  let $selection = $(this).val();
-  if ($selection === 'Filter by Keyword') {
-    $('div').show();
-  } else {
-    $('div').hide();
-    $(`.${$selection}`).show();
-  }
-});
+  $('option').not(':first').remove();
+
+  Horn.allHorns.forEach(horn => {
+    if(!filterKeyword.includes(horn.keyword))
+      filterKeyword.push(horn.keyword);
+  });
+
+  filterKeyword.sort();
+
+  filterKeyword.forEach(keyword => {
+    let optionTag = `<option value="${keyword}">${keyword}</option>`;
+    $('select').append(optionTag);
+  });
+};
+
+Horn.handlefilter = () => {
+  $('select'). on('change', function () {
+    let $selected = $(this).val();
+    if ($selected !== 'default') {
+      $('div').hide();
+
+      Horn.allHorns.forEach(horn => {
+        $($selected === horn.keyword) {
+          $(`div[class="${selected}"]`).addClass('filtered').fadeIn();
+        }
+      });
+
+      $(`option[value]=${$selected}`).fadeIn();
+    } else {
+      $('div').removeClass('filtered').fadeIn();
+      $(`option[value=${$selected}]`).fadeIn();
+    }
+  })
+};
+
 
 $(() => Horn.readJson());
 
