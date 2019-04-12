@@ -85,19 +85,19 @@ Horn.handleFilter = () => {
   $('select').on('change',function () {
     let $selected = $(this).val();
     if ($selected !== 'default') {
-      $(div).hide();
+      $('div').hide();
 
-      Horn.all.forEach(horn =>{
+      Horn.allHorns.forEach(horn =>{
         if ($selected === horn.keyword) {
           $(`div[class="${$selected}"`).addClass
           ('filtered').fadeIn();
         }
       });
 
-      $(`option[value="${selected}]`).fadeIn();
+      $(`option[value=${$selected}]`).fadeIn();
     } else {
-      $('div').removeClass('filtered').fadeIn();
-      $(`option[value=${selected}]`).fadeIn();
+      $('div').removeClass('filtered').fadeOut();
+      $(`option[value=${$selected}]`).fadeIn();
     }
   });
 }
