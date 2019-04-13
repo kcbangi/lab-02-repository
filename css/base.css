@@ -2,9 +2,9 @@ body {
 
     /* width: 960px; */
 
-    text-align: center;
+    /* text-align: center; */
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Courier New', Courier, monospace;
 
 }
 
@@ -12,7 +12,7 @@ body {
 
 h1 {
 
-    font-size: 50px;
+    font-size: 60px;
 
 }
 
@@ -20,12 +20,24 @@ h1 {
 
 header {
 
+    text-align: center;
+    
     margin: 50px 0;
 
-    background: rgba(13, 13, 61, 0.411);
+    background: rgba(255, 255, 255, 0.411);
 
     border: 30px 30px;
 
+}
+
+select {
+    margin-top: 50px;
+}
+
+h2 {
+    margin-left: 30px;
+    margin-top: 50px;
+    font-size: 28px;
 }
 
 img {
@@ -48,4 +60,25 @@ footer {
 
     display: none;
 
+}
+
+
+/* div {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+img {
+
+    width: 450px;
+    
+    height: 450px;
+
+    margin: 20px 30px;
+
+    /* border: 3px black solid; */
+
+/* } */
+p {
+    text-align: center;
 }

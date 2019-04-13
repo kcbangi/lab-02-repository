@@ -86,7 +86,7 @@ Horn.handleFilter = () => {
 
       Horn.allHorns.forEach(horn =>{
         if ($selected === horn.keyword) {
-          $(`div[class="${$selected}"`).addClass
+          $(`div[class="${$selected}"]`).addClass
           ('filtered').fadeIn();
         }
       });
